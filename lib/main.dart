@@ -1,9 +1,27 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:memory_share/firebase_options.dart';
+import 'package:memory_share/services/authentification.dart';
 import 'package:memory_share/views/login.dart';
+import 'package:memory_share/wrapper.dart';
+import 'package:provider/provider.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform
+  );
+
+  runApp(
+    MultiProvider(providers: [
+      StreamProvider.value(value: AuthService().user, initialData: null)
+    ],
+    child: MyApp(),
+    )
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -20,7 +38,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)
       ),
-      home: Login(),
+      home: Wrapper(),
     );
   }
 }

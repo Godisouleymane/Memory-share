@@ -29,5 +29,7 @@ Future<UserCredential> signInWithGoogle() async{
 
 }
 
+// L'etat de l'utilisateur en temps reel
 
+Stream<User?> get user => _auth.authStateChanges();
 }

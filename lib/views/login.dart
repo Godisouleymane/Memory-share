@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:memory_share/services/authentification.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -8,6 +9,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  bool inLoginProcess = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,12 +46,20 @@ class _LoginState extends State<Login> {
                 ),
               ),
             ),
+            inLoginProcess ? Center(child: CircularProgressIndicator()) :
             ElevatedButton(
-              onPressed: (){},
+              onPressed: () => signIn(),
                child: Text('Connectez-vous avec google'))
           ],
         ),
       ),
     );
+  }
+
+  signIn() {
+    setState(() {
+      inLoginProcess = true;
+      AuthService().signInWithGoogle();
+    });
   }
 }

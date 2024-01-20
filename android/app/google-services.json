@@ -12,7 +12,20 @@
           "package_name": "com.example.memory_share"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "371493227610-7aahngf9p891l889seh75mgg5fvbq2la.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.memory_share",
+            "certificate_hash": "3b9e6d067d7cc82e3b430fe6b2d107eb0779e786"
+          }
+        },
+        {
+          "client_id": "371493227610-oggu750lgf9jhiqb7hbtngks1ua22on9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCgcNUgN1R3eRemeD_ADDwWNmGtGSxnS0s"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "371493227610-oggu750lgf9jhiqb7hbtngks1ua22on9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "371493227610-8d0ot73ajm8vc61151it6hp39vkrs2v0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.memoryShare.RunnerTests"
+              }
+            }
+          ]
         }
       }
     }
