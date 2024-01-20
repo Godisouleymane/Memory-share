@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "371493227610",
+    "project_id": "my-mem-share",
+    "storage_bucket": "my-mem-share.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:371493227610:android:f177d668e68d1ebb479c63",
+        "android_client_info": {
+          "package_name": "com.example.memory_share"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgcNUgN1R3eRemeD_ADDwWNmGtGSxnS0s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
