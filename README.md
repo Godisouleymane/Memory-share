@@ -1,6 +1,15 @@
 # memory_share
 
-A new Flutter project.
+A new demo Flutter project and firebase .
+
+Memory-Share est une application de partage et de decouverte des beaux moments passes avec vos amies ou vos proches
+
+Fonctionnalité de l'app :
+- Pouvoir se  connecter avec son compte google juste en clic
+- Pouvoir faire des publications
+- Pouvoir liker et deliker une publication
+- Pouvoir supprimer une publication partagee
+
 
 ## Getting Started
 
