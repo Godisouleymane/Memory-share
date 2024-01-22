@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:memory_share/views/home.dart';
+import 'package:memory_share/views/home/home.dart';
 import 'package:memory_share/views/login.dart';
 import 'package:provider/provider.dart';
 
@@ -11,10 +11,9 @@ class Wrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     final _user = Provider.of<User?>(context);
     if (_user == null) {
-      return Login();
+      return const Login();
     } else {
-      return Home();
-      
+      return const Home();
     }
   }
 }

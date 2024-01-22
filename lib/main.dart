@@ -5,8 +5,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:memory_share/firebase_options.dart';
 import 'package:memory_share/services/authentification.dart';
 import 'package:memory_share/views/login.dart';
+import 'package:memory_share/views/profile/profile.dart';
 import 'package:memory_share/wrapper.dart';
 import 'package:provider/provider.dart';
+ 
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,11 +36,16 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Mem-share',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-        textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)
+        primarySwatch: Colors.amber,
+        useMaterial3: false,
+        textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
+        appBarTheme: AppBarTheme(color: Colors.white)
       ),
-      home: Wrapper(),
+    initialRoute: '/',
+    routes: {
+      '/':(context) => Wrapper(),
+      '/profile':(context) => Profile(),
+    },
     );
   }
 }

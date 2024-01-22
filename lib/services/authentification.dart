@@ -1,3 +1,4 @@
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -32,4 +33,12 @@ Future<UserCredential> signInWithGoogle() async{
 // L'etat de l'utilisateur en temps reel
 
 Stream<User?> get user => _auth.authStateChanges();
+
+// deconnexion
+
+Future<void> signOut() async{
+  await _googleSignIn.signOut();
+  await _auth.signOut();
+}
+
 }
