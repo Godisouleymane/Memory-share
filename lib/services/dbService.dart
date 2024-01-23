@@ -32,4 +32,8 @@ class DataBaseService {
       }
     );
   }
+
+  // Recupereation de toutes les images en temps reel;
+
+  
 }
