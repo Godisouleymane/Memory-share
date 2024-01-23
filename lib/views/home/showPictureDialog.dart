@@ -41,7 +41,7 @@ class PictureDialog {
                 Form(
                   key: _keyForm,
                   child: TextFormField(
-                    maxLength: 30,
+                    maxLength: 100,
                     onChanged: (value) => _picName = value,
                     validator: (value) => _picName == null ? _formErreur : null,
                     decoration: const InputDecoration(
@@ -50,6 +50,18 @@ class PictureDialog {
                     ),
                   )
                   ),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Wrap(
+                      children: [
+                        TextButton(
+                          onPressed: ()=> Navigator.of(context).pop(),
+                          child: Text('ANNULER')),
+                          ElevatedButton(onPressed: (){},
+                          child: Text('PUBLIER')),
+                      ],
+                    ),
+                  )
               ],
             ),
           )
