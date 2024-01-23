@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:memory_share/views/home/showPictureDialog.dart';
 
 class AddPictureSection extends StatelessWidget {
   final User? user;
@@ -44,14 +46,15 @@ class AddPictureSection extends StatelessWidget {
                       height: 40,
                       width: 40,
                       alignment: Alignment.center,
-                      margin: EdgeInsets.only(left: 8.0),
+                      margin: const EdgeInsets.only(left: 8.0),
                       decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.grey[300]
+                      shape: BoxShape.circle,
+                      color: Theme.of(context).primaryColor.withOpacity(0.5)
                       ),
                       child: IconButton(
-                        onPressed: (){}, icon: Icon(Icons.add)),
-                    )
+                        onPressed: ()=> showPicDialog(context, user!), icon: Icon(Icons.add)),
+                    ),
+                    
                   ],
                 )
               ],
@@ -60,5 +63,9 @@ class AddPictureSection extends StatelessWidget {
         ]
       )
       );
+  }
+
+  void showPicDialog(BuildContext context, User user) {
+    PictureDialog(user: user).showPicDialog(context, ImageSource.gallery);
   }
 }
