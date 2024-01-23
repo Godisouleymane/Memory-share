@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:memory_share/views/home/addPictuteSection.dart';
 import 'package:memory_share/views/home/homeAppBar.dart';
 import 'package:provider/provider.dart';
 
@@ -13,7 +14,7 @@ class Home extends StatelessWidget {
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
-            HomeAppBar(user: _user)
+            HomeAppBar(user: _user), AddPictureSection(user: _user)
           ],
         )
         ),
