@@ -68,5 +68,13 @@ class PictureDialog {
         ],
       );
     });
+
+  }
+
+  void onSubmit(context, keyForm, file, picDesc, user) {
+    if (keyForm.currentState!.validate()) {
+      Navigator.of(context).pop();
+      
+    }
   }
 }
