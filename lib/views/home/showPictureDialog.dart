@@ -15,7 +15,9 @@ class PictureDialog {
     XFile? _pickedFile = await ImagePicker().pickImage(source: source);
     File _file = File(_pickedFile!.path);
     final _keyForm = GlobalKey<FormState>();
-    // ignore: use_build_context_synchronously
+    String _picName = '';  
+    String _formErreur = 'Veuillez founir le nom de l\'image';
+      // ignore: use_build_context_synchronously
     showDialog(context: context, builder: (BuildContext contex){
       return SimpleDialog(
         contentPadding: EdgeInsets.zero,
@@ -32,10 +34,24 @@ class PictureDialog {
                 ),
             ),
           ),
-          Column(
-            children: [
-
-            ],
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                Form(
+                  key: _keyForm,
+                  child: TextFormField(
+                    maxLength: 30,
+                    onChanged: (value) => _picName = value,
+                    validator: (value) => _picName == null ? _formErreur : null,
+                    decoration: const InputDecoration(
+                      labelText: "Description de l'image",
+                      border: OutlineInputBorder(),
+                    ),
+                  )
+                  ),
+              ],
+            ),
           )
         ],
       );
