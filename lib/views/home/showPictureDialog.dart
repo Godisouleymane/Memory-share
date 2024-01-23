@@ -3,6 +3,9 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:memory_share/model/picModel.dart';
+import 'package:memory_share/services/dbService.dart';
+import 'package:memory_share/shared-ui/showSnackBar.dart';
 
 class PictureDialog {
   User? user;
@@ -15,8 +18,8 @@ class PictureDialog {
     XFile? _pickedFile = await ImagePicker().pickImage(source: source);
     File _file = File(_pickedFile!.path);
     final _keyForm = GlobalKey<FormState>();
-    String _picName = '';  
-    String _formErreur = 'Veuillez founir le nom de l\'image';
+    String _picDesc = '';  
+    String _formErreur = "Veuillez founir la description de l'image";
       // ignore: use_build_context_synchronously
     showDialog(context: context, builder: (BuildContext contex){
       return SimpleDialog(
@@ -42,8 +45,8 @@ class PictureDialog {
                   key: _keyForm,
                   child: TextFormField(
                     maxLength: 100,
-                    onChanged: (value) => _picName = value,
-                    validator: (value) => _picName == null ? _formErreur : null,
+                    onChanged: (value) => _picDesc = value,
+                    validator: (value) => _picDesc.isEmpty ? _formErreur : null,
                     decoration: const InputDecoration(
                       labelText: "Description de l'image",
                       border: OutlineInputBorder(),
@@ -56,9 +59,9 @@ class PictureDialog {
                       children: [
                         TextButton(
                           onPressed: ()=> Navigator.of(context).pop(),
-                          child: Text('ANNULER')),
-                          ElevatedButton(onPressed: (){},
-                          child: Text('PUBLIER')),
+                          child: const Text('ANNULER')),
+                          ElevatedButton(onPressed: ()=> onSubmit(context, _keyForm, _file, _picDesc, user),
+                          child: const Text('PUBLIER')),
                       ],
                     ),
                   )
@@ -71,10 +74,20 @@ class PictureDialog {
 
   }
 
-  void onSubmit(context, keyForm, file, picDesc, user) {
+  void onSubmit(context, keyForm, file, picDesc, user) async {
     if (keyForm.currentState!.validate()) {
       Navigator.of(context).pop();
-      
+      showNotification(context, "Chargement...");
+      DataBaseService db = DataBaseService();
+
+      String _picUrlImg = await db.uploadFile(file);
+
+      db.addPic(Picture(
+        picDesc: picDesc,
+        picUrlImg: _picUrlImg,
+        picUserID: user!.uid,
+        picUserName: user!.displayName,
+      ));
     }
   }
 }
