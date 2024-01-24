@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:memory_share/model/picModel.dart';
+import 'package:memory_share/services/dbService.dart';
 
 class FavoriteBadge extends StatefulWidget {
   final Picture? picture;
@@ -22,30 +23,36 @@ class _FavoriteBadgeState extends State<FavoriteBadge> {
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
           color: Colors.white.withOpacity(0.3)
         ),
-        child: widget.picture!.isMyFavoritePicture! ? Row(
-          children: [
-            Text('${widget.picture!.picFavoriteCount}',
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.red,
-            ),
-            ),
-            const Icon(
-              Icons.favorite, color: Colors.red,
-            )
-          ],
-        ) : Row(
-          children: [
-            widget.picture!.picFavoriteCount! > 0 ?
-            Text('${widget.picture!.picFavoriteCount}',
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
-            ) : Container(),
-            const Icon(
-              Icons.favorite,
-            )
-          ],
+        child: widget.picture!.isMyFavoritePicture! ? GestureDetector(
+          onTap: ()=> DataBaseService().removeFavoritePicture(widget.picture!, widget.userID!),
+          child: Row(
+            children: [
+              Text('${widget.picture!.picFavoriteCount}',
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.red,
+              ),
+              ),
+              const Icon(
+                Icons.favorite, color: Colors.red,
+              )
+            ],
+          ),
+        ) : GestureDetector(
+          onTap: () => DataBaseService().addFavoritePicture(widget.picture!, widget.userID!),
+          child: Row(
+            children: [
+              widget.picture!.picFavoriteCount! > 0 ?
+              Text('${widget.picture!.picFavoriteCount}',
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+              ) : Container(),
+              const Icon(
+                Icons.favorite,
+              )
+            ],
+          ),
         ),
       ),
     );
