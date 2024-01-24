@@ -3,7 +3,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:memory_share/firebase_options.dart';
+import 'package:memory_share/model/picModel.dart';
 import 'package:memory_share/services/authentification.dart';
+import 'package:memory_share/services/dbService.dart';
 import 'package:memory_share/views/login.dart';
 import 'package:memory_share/views/profile/profile.dart';
 import 'package:memory_share/wrapper.dart';
@@ -19,7 +21,8 @@ Future<void> main() async {
 
   runApp(
     MultiProvider(providers: [
-      StreamProvider.value(value: AuthService().user, initialData: null)
+      StreamProvider.value(value: AuthService().user, initialData: null),
+      StreamProvider<List<Picture>>.value(value: DataBaseService().pics, initialData: [])
     ],
     child: MyApp(),
     )

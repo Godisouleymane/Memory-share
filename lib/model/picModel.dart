@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class Picture {
   String? picID, picDesc, picUrlImg, picUserID, picUserName;
 
-  Timestamp? picTimestamp;
+  Timestamp? picTimeStamp;
   bool? isMyFavoritePicture;
   int? picFavoriteCount;
 
@@ -13,7 +13,7 @@ class Picture {
     this.picUrlImg,
     this.picUserID,
     this.picUserName,
-    this.picTimestamp,
+    this.picTimeStamp,
     this.isMyFavoritePicture,
     this.picFavoriteCount,
   });

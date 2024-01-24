@@ -35,5 +35,21 @@ class DataBaseService {
 
   // Recupereation de toutes les images en temps reel;
 
-  
+  Stream <List<Picture>> get pics {
+    Query queryPictures = _pics.orderBy('picTimeStamp', descending: true);
+
+    return queryPictures.snapshots().map((snapshot){
+      return snapshot.docs.map((doc){
+        return Picture(
+          picID: doc.id,
+          picDesc: doc.get('picDesc'),
+          picUrlImg: doc.get('picUrlImg'),
+          picUserID: doc.get('picUserID'),
+          picUserName: doc.get('picUserName'),
+          picFavoriteCount: doc.get('picFavoriteCount'),
+          picTimeStamp: doc.get('picTimeStamp')
+        );
+      }).toList();
+    });
+  }
 }
