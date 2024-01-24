@@ -3,6 +3,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:memory_share/model/picModel.dart';
 
 class DataBaseService {
+  String? userID, picID;
+  DataBaseService({this.userID, this.picID});
   // declaration et initialisation
 
   CollectionReference _pics = FirebaseFirestore.instance.collection('pics');
@@ -90,5 +92,18 @@ class DataBaseService {
 
 
   // recuperation des images favoris de l'utilsateur en temps reel;
-  
+  Stream<Picture> get myFavoritePicture{
+    final favoritedBy = _pics.doc(picID).collection('favoritedBy');
+    return favoritedBy.doc(userID).snapshots().map((doc){
+      Picture(
+          picID: doc.id,
+          picDesc: doc.get('picDesc'),
+          picUrlImg: doc.get('picUrlImg'),
+          picUserID: doc.get('picUserID'),
+          picUserName: doc.get('picUserName'),
+          picFavoriteCount: doc.get('picFavoriteCount'),
+          picTimeStamp: doc.get('picTimeStamp')
+        );
+    });
+  }
 }
