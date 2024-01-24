@@ -87,4 +87,8 @@ class DataBaseService {
     });
     favoritedBy.doc(userID).delete();
   }
+
+
+  // recuperation des images favoris de l'utilsateur en temps reel;
+  
 }
