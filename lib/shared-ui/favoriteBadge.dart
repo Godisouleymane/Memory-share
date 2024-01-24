@@ -11,7 +11,6 @@ class FavoriteBadge extends StatefulWidget {
 }
 
 class _FavoriteBadgeState extends State<FavoriteBadge> {
-  bool isMyFavoritePicture =  false;
   @override
   Widget build(BuildContext context) {
     return Positioned(
@@ -23,7 +22,7 @@ class _FavoriteBadgeState extends State<FavoriteBadge> {
           borderRadius: BorderRadius.all(Radius.circular(8.0)),
           color: Colors.white.withOpacity(0.3)
         ),
-        child: isMyFavoritePicture ? Row(
+        child: widget.picture!.isMyFavoritePicture! ? Row(
           children: [
             Text('${widget.picture!.picFavoriteCount}',
             style: const TextStyle(

@@ -95,7 +95,7 @@ class DataBaseService {
   Stream<Picture> get myFavoritePicture{
     final favoritedBy = _pics.doc(picID).collection('favoritedBy');
     return favoritedBy.doc(userID).snapshots().map((doc){
-      Picture(
+      return Picture(
           picID: doc.id,
           picDesc: doc.get('picDesc'),
           picUrlImg: doc.get('picUrlImg'),
