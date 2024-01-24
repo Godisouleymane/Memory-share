@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:memory_share/model/picModel.dart';
 import 'package:memory_share/services/dbService.dart';
-import 'package:memory_share/shared-ui/showSnackBar.dart';
+import 'package:memory_share/views/shared-ui/showSnackBar.dart';
 
 class PictureDialog {
   User? user;

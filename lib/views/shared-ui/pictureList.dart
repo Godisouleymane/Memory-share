@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:memory_share/model/picModel.dart';
 import 'package:memory_share/services/dbService.dart';
-import 'package:memory_share/shared-ui/pictureFeeed.dart';
+import 'package:memory_share/views/shared-ui/pictureFeeed.dart';
 import 'package:provider/provider.dart';
 
 class PictureList extends StatelessWidget {
-  final String? userID; 
-  const PictureList({this.userID});
+  final String? pageName, userID; 
+  const PictureList({this.pageName,this.userID});
 
   @override
   Widget build(BuildContext context) {

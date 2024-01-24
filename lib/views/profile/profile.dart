@@ -15,7 +15,15 @@ class Profile extends StatelessWidget {
           slivers: [
             ProfilAppBar(
               user: _user,
-            )
+            ),
+            SliverList(
+              delegate: SliverChildListDelegate([
+                const Padding(
+                  padding: EdgeInsets.only(top: 24.0, left: 16.0, bottom: 12.0),
+                  child: Text('Vos images favoris', style: TextStyle(fontWeight: FontWeight.bold),),
+                )
+              ])
+              )
           ],
         )
       ),

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:memory_share/model/picModel.dart';
-import 'package:memory_share/shared-ui/favoriteBadge.dart';
+import 'package:memory_share/views/shared-ui/favoriteBadge.dart';
 
 
 class PictureFeed extends StatelessWidget {

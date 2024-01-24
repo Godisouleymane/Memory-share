@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:memory_share/shared-ui/pictureList.dart';
+import 'package:memory_share/views/shared-ui/pictureList.dart';
 import 'package:memory_share/views/home/addPictuteSection.dart';
 import 'package:memory_share/views/home/homeAppBar.dart';
 import 'package:provider/provider.dart';
