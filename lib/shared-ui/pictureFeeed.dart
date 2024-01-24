@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:memory_share/model/picModel.dart';
+import 'package:memory_share/shared-ui/favoriteBadge.dart';
 
 
 class PictureFeed extends StatelessWidget {
@@ -14,18 +15,23 @@ class PictureFeed extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-      height: MediaQuery.of(context).size.height * 0.35,
-      margin: EdgeInsets.symmetric(horizontal: 8.0),
-     decoration: BoxDecoration(
-      color: Colors.grey,
-      borderRadius: BorderRadius.all(Radius.circular(8.0)),
-      image: DecorationImage(
-        image: NetworkImage(picture!.picUrlImg!),
-        fit: BoxFit.cover
-        )
-     ),
-    ),
+        Stack(
+          children: [
+            Container(
+                height: MediaQuery.of(context).size.height * 0.35,
+                margin: EdgeInsets.symmetric(horizontal: 8.0),
+               decoration: BoxDecoration(
+                color: Colors.grey,
+                borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                image: DecorationImage(
+          image: NetworkImage(picture!.picUrlImg!),
+          fit: BoxFit.cover
+          )
+               ),
+              ),
+            FavoriteBadge(picture: picture!, userID: userID),
+          ],
+        ),
     Padding(
       padding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 16.0),
       child: Row(
