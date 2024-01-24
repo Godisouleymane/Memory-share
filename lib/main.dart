@@ -6,6 +6,7 @@ import 'package:memory_share/firebase_options.dart';
 import 'package:memory_share/model/picModel.dart';
 import 'package:memory_share/services/authentification.dart';
 import 'package:memory_share/services/dbService.dart';
+import 'package:memory_share/views/detail/pictureDetail.dart';
 import 'package:memory_share/views/login.dart';
 import 'package:memory_share/views/profile/profile.dart';
 import 'package:memory_share/wrapper.dart';
@@ -48,6 +49,7 @@ class MyApp extends StatelessWidget {
     routes: {
       '/':(context) => Wrapper(),
       '/profile':(context) => Profile(),
+      '/detail':(context) => PictureDetail(),
     },
     );
   }
