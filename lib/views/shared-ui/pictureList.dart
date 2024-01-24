@@ -16,6 +16,16 @@ class PictureList extends StatelessWidget {
         return StreamBuilder(stream:
         DataBaseService(userID: userID, picID: _photos[index].picID).myFavoritePicture,
         builder: (context, snapshot){
+          if (pageName == 'Profile') {
+            if (!snapshot.hasData) {
+              return Container();
+            } else {
+                _photos[index].isMyFavoritePicture = true;
+            return PictureFeed(
+              picture: _photos[index], userID: userID, 
+            );
+            }
+          }
           if (!snapshot.hasData) {
             _photos[index].isMyFavoritePicture = false;
             return PictureFeed(
