@@ -106,4 +106,8 @@ class DataBaseService {
         );
     });
   }
+
+  // Supression d'une image  dans firestore
+
+  Future<void> deletePicture(String picID) => _pics.doc(picID).delete();
 }
