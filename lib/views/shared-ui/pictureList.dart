@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:memory_share/model/picModel.dart';
 import 'package:memory_share/services/dbService.dart';
-import 'package:memory_share/views/shared-ui/pictureFeeed.dart';
+import 'package:memory_share/views/shared-ui/pictureFeed.dart';
 import 'package:provider/provider.dart';
 
 class PictureList extends StatelessWidget {
