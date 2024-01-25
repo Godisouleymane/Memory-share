@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:memory_share/services/authentification.dart';
+import 'package:memory_share/views/shared-ui/showSnackBar.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -48,7 +51,7 @@ class _LoginState extends State<Login> {
             ),
             inLoginProcess ? Center(child: CircularProgressIndicator()) :
             ElevatedButton(
-              onPressed: () => signIn(),
+              onPressed: () => signIn(context),
                child: Text('Connectez-vous avec google'))
           ],
         ),
@@ -56,10 +59,19 @@ class _LoginState extends State<Login> {
     );
   }
 
-  signIn() {
-    setState(() {
-      inLoginProcess = true;
-      AuthService().signInWithGoogle();
-    });
+  Future signIn(BuildContext context) async {
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+         setState(() {
+          inLoginProcess = true;
+          AuthService().signInWithGoogle();
+    }
+    );
+      }
+    } catch (e) {
+      showNotification(context, 'Aucune connexion internet');
+    }
+   
   }
 }

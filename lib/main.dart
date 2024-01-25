@@ -7,7 +7,7 @@ import 'package:memory_share/model/picModel.dart';
 import 'package:memory_share/services/authentification.dart';
 import 'package:memory_share/services/dbService.dart';
 import 'package:memory_share/views/detail/pictureDetail.dart';
-import 'package:memory_share/views/login.dart';
+import 'package:memory_share/login/login.dart';
 import 'package:memory_share/views/profile/profile.dart';
 import 'package:memory_share/wrapper.dart';
 import 'package:provider/provider.dart';
