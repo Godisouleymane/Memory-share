@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:memory_share/views/home/showPictureDialog.dart';
+import 'package:memory_share/views/shared-ui/showSnackBar.dart';
 
 class AddPictureSection extends StatelessWidget {
   final User? user;
@@ -65,7 +68,15 @@ class AddPictureSection extends StatelessWidget {
       );
   }
 
-  void showPicDialog(BuildContext context, User user) {
-    PictureDialog(user: user).showPicDialog(context, ImageSource.gallery);
+  Future showPicDialog(BuildContext context, User user) async {
+     try {
+      final result = await InternetAddress.lookup('google.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        PictureDialog(user: user).showPicDialog(context, ImageSource.gallery);
+      }
+    } catch (e) {
+      showNotification(context, 'Aucune connexion internet');
+    }
+   
   }
 }
