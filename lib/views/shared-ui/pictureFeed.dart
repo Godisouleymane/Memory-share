@@ -19,18 +19,21 @@ class PictureFeed extends StatelessWidget {
           children: [
             GestureDetector(
               onTap:()=> Navigator.pushNamed(context, '/detail', arguments: picture!),
-              child: Container(
-                  height: MediaQuery.of(context).size.height * 0.35,
-                  margin: EdgeInsets.symmetric(horizontal: 8.0),
-                 decoration: BoxDecoration(
-                  color: Colors.grey,
-                  borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                  image: DecorationImage(
-                        image: NetworkImage(picture!.picUrlImg!),
-                        fit: BoxFit.cover
-                        )
-                 ),
-                ),
+              child: Hero(
+                tag: picture!.picDesc!,
+                child: Container(
+                    height: MediaQuery.of(context).size.height * 0.35,
+                    margin: EdgeInsets.symmetric(horizontal: 8.0),
+                   decoration: BoxDecoration(
+                    color: Colors.grey,
+                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                    image: DecorationImage(
+                          image: NetworkImage(picture!.picUrlImg!),
+                          fit: BoxFit.cover
+                          )
+                   ),
+                  ),
+              ),
             ),
             FavoriteBadge(picture: picture!, userID: userID),
           ],

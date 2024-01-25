@@ -12,17 +12,20 @@ class ProfilAppBar extends StatelessWidget {
     expandedHeight:MediaQuery.of(context).size.height * 0.40,
     pinned: true,
     flexibleSpace: FlexibleSpaceBar(
-      background: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: NetworkImage(user!.photoURL!), ),
-        ),
+      background: Hero(
+        tag: user!.photoURL!,
         child: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.blue, Colors.transparent],
-              begin: Alignment.bottomRight
-              )
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: NetworkImage(user!.photoURL!), ),
+          ),
+          child: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.blue, Colors.transparent],
+                begin: Alignment.bottomRight
+                )
+            ),
           ),
         ),
       ),

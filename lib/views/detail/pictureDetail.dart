@@ -33,16 +33,19 @@ class PictureDetail extends StatelessWidget {
           IconButton(onPressed: ()=> onDeletePicture(context, pubImage), icon: Icon(Icons.delete)) : Container()
         ],
       ),
-      body: Center(
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.black,
-            image: DecorationImage(
-              image: NetworkImage(pubImage.picUrlImg!)
+      body: Hero(
+        tag: pubImage.picDesc!,
+        child: Center(
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.black,
+              image: DecorationImage(
+                image: NetworkImage(pubImage.picUrlImg!)
+            ),
           ),
         ),
-      ),
-    ));
+            ),
+      ));
   }
 
   void onDeletePicture(BuildContext context, Picture picture) {
