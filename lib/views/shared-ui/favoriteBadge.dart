@@ -34,7 +34,7 @@ class _FavoriteBadgeState extends State<FavoriteBadge> {
               ),
               ),
               const Icon(
-                Icons.favorite, color: Colors.blue,
+                Icons.favorite, color: Colors.red,
               )
             ],
           ),
